@@ -1,9 +1,37 @@
 html {
     font: bold italic 22px Times New Roman;
 }
-.site{
+
+.site {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, auto);
+}
+
+.head {
+    background: #2185C5;
+    color: white;
+    text-align: center;
+}
+
+.main-content {
+    background: white;
+}
+
+.sidebar {
+    background: blueviolet;
+}
+
+.twin {
+    background: #2185C5;
+}
+
+.second-twin {
+    background: #7ECEFD;
+}
+
+.footer {
+    background: #3E454C;
+    color: white;
 }
