@@ -1,6 +1,7 @@
 html {
     font: bold italic 22px Times New Roman;
 }
+
 body {
     background: black;
 }
@@ -43,13 +44,15 @@ body {
 
 @media screen and (min-width: 600px) {
     .site {
-        grid-template-columns: repeat(8,1fr);
+        grid-template-columns: repeat(8, 1fr);
         grid-template-rows: auto 1fr auto auto;
     }
+
     .head,
     .footer {
         grid-column: span 8;
     }
+
     .main-content {
         grid-column: 1/6;
     }
