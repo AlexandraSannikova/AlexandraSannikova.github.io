@@ -1,3 +1,9 @@
 html {
     font: bold italic 22px Times New Roman;
 }
+.site{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+}
