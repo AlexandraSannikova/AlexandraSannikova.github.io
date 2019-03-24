@@ -8,11 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/lab2/style2.css">
     <title>Second Lab</title>
+    <style>
+        @media (max-width: 992px) {
+            .card-columns {
+                column-count: 1
+            }
+        }
+    </style>
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
             aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,9 +41,61 @@
     </div>
 </nav>
 
-<div class="jumbotron bg-info text-white">
-    <h1 class="display-3">Наша Миссия</h1>
+<div class="jumbotron bg-info text-white mt-3 pb-3">
+    <h1 class="display-4">Наша Миссия</h1>
     <p class="lead">Благодаря высокому уровню образования в старших классах и тщательной подготовке к поступлению в университет ученики международных школ-пансионов EF Academy открывают мир безграничных возможностей и находят свой жизненный путь.</p>
+</div>
+
+<div class="container">
+    <div class="card-columns text-center">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Программа - A-Level</h5>
+            <p class="card-text">Программа A-Level позволяет студентам сфокусироваться на меньшем количестве предметов, чем в общеобразовательной школе, что позволяет получить более углубленные знания в выбранных студентом дисциплинах. </p>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">IB Diploma</h5>
+            <p class="card-text">International Baccalaureate® — это всемирно известная квалификация для студентов, которые стремятся к широкой учебной программе, помогающей развить все необходимые навыки для успешного поступления в университет. </p>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">High School Diploma</h5>
+            <p class="card-text">Это аттестат о среднем образовании в США, который позволит с легкостью поступить в университет США, решая проблему пересчета отметок и давая четкое понимание того, как устроен академический мир в Америке.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="jumbotron mt-3">
+    <h1 class="display-4">Подробная информация о школах</h1>
+    <p class="lead">В EF Academy есть все, что можно ожидать от школы-пансиона международного уровня – современные аудитории, высококвалифицированные педагоги и обучение по признанным во всем мире программам. Однако у нас есть принципиальное отличие: мы ставим перед собой задачу с помощью первоклассного образования подготовить вас к построению успешной карьеры.
+
+        Обучение в одной из наших школ в Нью-Йорке, Торбее или Оксфорде значительно способствует личностному росту и развитию навыков, необходимых для достижения успеха в глобальном 21 веке. Общение со сверстниками из 75 стран помогает лучше узнать разные культуры, а благодаря насыщенной программе обучения и внеклассным занятиям вы не только расширите свой кругозор, но и станете независимым и уверенными гражданами мира!</p>
+</div>
+
+<div class="container">
+    <h4>Хотите оставить сообщение?</h4>
+<form>
+    <div class="form-group">
+        <label for="inputName">Ваше имя</label>
+        <input type="email" class="form-control" id="inputName" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+        <label for="inputEmail1">E-mail</label>
+        <input type="email" class="form-control" id="inputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Сообщение</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+</form>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
