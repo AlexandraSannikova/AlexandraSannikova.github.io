@@ -47,8 +47,9 @@ function parseQuote(response) {
 
 }
 function getText() {
-    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest; // ????
     let xhr = new XHR();
+    let generatedText;
 
     xhr.open('POST', 'https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru', true);
     xhr.send();
@@ -56,13 +57,33 @@ function getText() {
         if (xhr.readyState !== 4) {
             return;
         }
-        let text = JSON.parse(xhr.responseText).quoteText;
-        alert(text);
+        generatedText = JSON.parse(xhr.responseText).quoteText;
+       // alert(generatedText);
+        makeText(generatedText, canvas.width, canvas.height);
     };
+    //console.log(generatedText);
+
 }
 
-function makeText(text, w){
+function makeText(text, w, h){
     let mas = text.split(' ');
+    let line = '';
+    let formatted = [];
+    for(let i = 0; i < mas.length; i++) {
+        if(ctx.measureText(line + ' ' + mas[i]).width < w){
+            if(i !== 0){
+                line += ' ';
+            }
+            line += mas[i];
+        } else {
+            formatted.push(line);
+            line = mas[i];
+            if (i === mas.length - 1) {
+                formatted.push(line);
+            }
+        }
+    }
+    console.log(formatted);
 }
 
 //calculate(300, 200, 50, 150);
