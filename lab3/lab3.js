@@ -64,10 +64,9 @@ function getText() {
     if(countLoaded < 4){
         return;
     }
-    alert(countLoaded);
+  //  alert(countLoaded);
 
     let xhr = new XMLHttpRequest(); // ????
-    let generatedText;
 
     xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru', true);
 
@@ -78,7 +77,7 @@ function getText() {
 
         if (xhr.status === 200) {
 
-            alert(generatedText);
+            //alert(generatedText);
             //console.log(text);
             drawText(xhr.responseText);
         }
@@ -88,9 +87,13 @@ function getText() {
 
 }
 let countLines = 0;
-function makeLines(text, w, h) {
-    console.log(text);
+function makeLines(text, w) {
+   // console.log(text);
     let mas = text.split(' ');
+    if(mas[mas.length - 1] ===''){
+        mas = mas.slice(0, -1);
+    }
+    console.log(mas);
     let line = '';
     let formatted = [];
     let format = '';
@@ -101,21 +104,21 @@ function makeLines(text, w, h) {
                 //alert(line);
             }
             line += mas[i];
-           // alert(line);
+            if(i === (mas.length - 1)){
+                formatted.push(line);
+            }
         } else {
             formatted.push(line);
-            countLines++;
             format += line + '\n';
             line = mas[i];
-            if (i === mas.length - 1) {
+            if (i === (mas.length - 1)) {
                 formatted.push(line);
-                countLines++;
                 format += line;
             }
         }
 
     }
-    //alert(format);
+    //alert(formatted);
     return formatted;
 }
 
@@ -124,21 +127,30 @@ function drawText(responseJSON) {
     ctx.textAlign = 'center';
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'middle';
-    generatedText = JSON.parse(responseJSON).quoteText;
-    let lines = makeLines(generatedText, canvas.width, canvas.height);
-    let center = canvas.width / 2;
-    let hLine = getFontHeight(ctx.font);
+    let generatedText = JSON.parse(responseJSON).quoteText;
+    let left = 15, right = 15, hLine = 33;
+    //top = 20, bottom = 20;
 
-    if(countLines*hLine > canvas.height){
+    let width = canvas.width - 2*left;
+    //let height = canvas.height - 2*top;
+    let height = canvas.height;
+    let center = canvas.width / 2;
+
+    //let hLine = getFontHeight(ctx.font);
+
+    let lines = makeLines(generatedText, width);
+    //console.log(lines);
+    let lenOfLines = hLine*lines.length;
+    if(lenOfLines > height){
         alert('Too big text');
         return;
     }
-    lines.forEach(function (value){
-        ctx.fillText(value, center, 20);
-        //marginTop += lineHeight;
+    let top = (height - lenOfLines)/2;
+    lines.forEach(val => {
+        ctx.fillText(val, center, top);
+        top += hLine;
     });
    // ctx.fillText(text, center, 50);
-    alert('kk');
 }
 //getFontHeight(ctx.font);
 function getFontHeight(font) {
